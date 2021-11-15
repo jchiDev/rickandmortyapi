@@ -1,5 +1,5 @@
 {
-  "homepage":"https://JuanCarlos098.github.io/rickandmortyapi.git",
+  "homepage": "https://JuanCarlos098.github.io/rickandmortyapi",
   "name": "webpackreact",
   "version": "1.0.0",
   "description": "",
@@ -9,7 +9,7 @@
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "start": "webpack-dev-server --history-api-fallback --open --mode development"
   },
   "keywords": [],
