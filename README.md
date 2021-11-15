@@ -1,6 +1,6 @@
 # Getting Started
 
-This project was bootstrapped with Webpack.
+Este proyecto fue empaquetado con Webpack. Para iniciar corre el comando npm install y después npm run start.
 
 ## Available Scripts
 
