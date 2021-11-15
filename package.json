@@ -1,4 +1,5 @@
 {
+  "homepage":"https://JuanCarlos098.github.io/rickandmortyapi.git",
   "name": "webpackreact",
   "version": "1.0.0",
   "description": "",
@@ -7,6 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "webpack-dev-server --history-api-fallback --open --mode development"
   },
   "keywords": [],
