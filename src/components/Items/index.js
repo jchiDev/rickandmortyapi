@@ -33,10 +33,12 @@ const ItemLista = () => {
           dispatch(delItems());
         } else {
           setNoData(false);
+          setSentQuery(false);
           dispatch(setItems(data));
           dispatch(delResults());
           dispatch(delSearch());
           setName('');
+          document.getElementById("form-search").reset();
         }
       })
       .catch(error => {
@@ -100,41 +102,43 @@ const ItemLista = () => {
       <Row>
         {/* <h1>Lista de personajes</h1> */}
         <div className="container mb-4 align-items-center">
-          <form className="row" onSubmit={onSubmit}>
-          <div className="col-auto">
-            <label htmlFor="name" className="col-form-label">Nombre</label>
-          </div>
-          <div className="col-auto">
-            <input
-            id='name'
-            className='form-control'
-            type='search'
-            placeholder='Buscar por nombre'
-            name='characterName'
-            onChange={handleNameChange}
-            value={textSearch.length > 0 ? textSearch : name}></input>
-          </div>
-          <div className="col-auto">
-            <Button
-            varian="primary"
-            type='submit'>
-              <FaSearch /> Buscar
-            </Button>
-            {' '}
-            <Button variant="light" onClick={() => fetchItems(api)}>
-              <FaRedoAlt /> Ver todo
-            </Button>
-          </div>
+          <form id="form-search" className="row" onSubmit={onSubmit}>
+            <div className="col-auto">
+              <label htmlFor="name" className="col-form-label">Nombre</label>
+            </div>
+            <div className="col-auto">
+              <input
+              id='name'
+              className='form-control'
+              type='search'
+              placeholder='Buscar por nombre'
+              name='characterName'
+              onChange={handleNameChange}></input>
+              {textSearch ? (
+                <small className="text-muted form-text">Búsqueda actual: {textSearch}</small>
+              ) : (
+                ''
+              )}
+            </div>
+            <div className="col-auto">
+              <Button
+              varian="primary"
+              type='submit'>
+                <FaSearch /> Buscar
+              </Button>
+              {' '}
+              <Button variant="light" onClick={() => fetchItems(api)}>
+                <FaRedoAlt /> Ver todo
+              </Button>
+            </div>
           
           </form>
         </div>
       </Row>
 
       <Row>
-        {sentQuery ? (
-          <div className='search-status'>
-            <small className='search-status--query'>Resultados para: {stringQuery}</small>
-          </div>
+        {sentQuery || textSearch ? (
+          <p><small>Número de resultados: {results.length}</small></p>
         ) : (
           ''
         )}
